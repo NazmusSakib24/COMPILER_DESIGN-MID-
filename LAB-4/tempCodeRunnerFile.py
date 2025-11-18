@@ -5,7 +5,7 @@ f.close()
 print("\n")
 print("Full Contents of the file:\n")
 for line in lines:
-    print(line)  
+    print(line, end="")  
 
 print("\nToken Analysis\n")
 line_number = 1
@@ -19,20 +19,19 @@ for line in lines:
 
     word = ""
     for ch in line:  
-        if ch in " +-*/=<>();{}#\"'":
+        if ch in " +-*/=<>();{}#\"":
             if word:
-                if word in ["int","return","using","namespace","cout","cin","main","iostream","std","include","char"]:
+                if word in ["int","return","using","namespace","cout","cin","main","iostream","std","include"]:
                     print(word, "-> Keyword")
-                elif word.isdigit():   
+                elif word.isdigit():
                     print(word, "-> Number")
                 else:
                     print(word, "-> Identifier")
                 word = ""
             if ch in "+-*/=<>":
                 print(ch, "-> Operator")
-            elif ch in "();{}#\"'":
+            elif ch in "();{}#\"":
                 print(ch, "-> Punctuation")
-                
         else:
             word += ch
 
